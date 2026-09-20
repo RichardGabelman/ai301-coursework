@@ -49,8 +49,6 @@ recording `reject` for the issue you chose earns no credit for this field.
 
 ## Eval iterations
 
-Quote source text directly in each field below. Paraphrase does not satisfy them.
-
 **Run history**
 
 14/20
@@ -77,18 +75,11 @@ This check was necessary in my case to get a correct rejection of issue 15. An i
 
 ## Selection rationale
 
-Graded on whether all three are answered, in your own words. Not on how good the
-reasoning is, and not on length — a short honest answer to each earns the full marks.
-This is also the basis for the claim comment you write in Unit 2.
-
 **Selection rationale**
 
-[Answer all three:
-
-1. The issue's fit to your interests and to the time available.
-2. What the verdict identified correctly, and what you weighed that the rubric could
-   not.
-3. The anticipated difficulty in claiming it.]
+1. The issue deals with the correcting of a bias detection script which is tangentially related to my interests in public policy and civic tech. I already know the language in which the script is written in. There is no estimated timeline given to the issue (unlike some other issues) but the scope seems managable.
+2. My rubric correctly identified that the skeleton of the issue was good. The repo looks well-maintained and the issue looks good, in a technical sense (not claimed, well-scoped, no unresolved debate, etc....). The skill could only really ake into account my short bio when ranking the passing candidates as I didn't have any optional checks. I think it did a good job at ranking the issues by alignment with my interests. I have previous project experience in semantic comparisons which I wasn't able to incorporate into my bio (or the rubric for that matter) which also draws me to this issue. I have some notion of the potential solution already which I think will make undertaking this issue easier.
+3. The issue is a tier-1 issue and thus it may be harder to claim in the sense that there will be more competition. The issue is well-scoped with a clear success metric via the failing tests. The factors I could see that would make it less competitive would be no 'good first issue' label, no estimated time to complete, and it not being necessarily technically "exciting" in an AI context.
 
 ---
 
