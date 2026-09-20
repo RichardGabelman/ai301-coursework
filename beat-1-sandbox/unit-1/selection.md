@@ -41,27 +41,25 @@ Quote source text directly in each field below. Paraphrase does not satisfy them
 
 **Run history**
 
-[The agreement score of each run you did, in order. A single run is a complete answer if
-only one run occurred. **The last score in your list must match the agreement line in the
-`eval-run.txt` you committed** — that file is the record of your final run.]
+14/20
+17/20
+16/20
+19/20
+20/20
 
 **Issue analysis**
 
-[One scored issue, identified by id (`issue-01` through `issue-20`; the `calib-`
-issues are not scored). State your rubric's decision, the gold label, and the
-reasoning that produced your rubric's result.]
+Issue 15, my rubric says reject which is in accordance with the gold label. The specific reason my rubric rejects it is that the comments contain unresolved debate regarding design.
 
 **Check rationale**
 
-[One check from the `rubric.md` uploaded to `tools/issue-select/`, quoted as it is
-currently written, with the reasoning behind its current form.]
+| Comments don't include unresolved debate | The issue comments | Issue does not have unresolved design/implementation/etc debate | Required |
+
+Issues in which the right decision on how to actually handle it hasn't been decided are not good candidates. You won't know what specifically to do and may result in wasted work.
 
 **Trade-offs**
 
-[What the quoted check gives up. Any one of these is a complete answer: an issue whose
-result it changes, a canary you re-ran with `--only`, a case you accept it will miss, or a
-stated reason nothing changed elsewhere. "Nothing changed, and here is how I know" earns
-the point in full when the reason follows.]
+This check was necessary in my case to get a correct rejection of issue 15. An issue can appear well-scoped in the original description and be within a well-maintained repository but if the organization hasn't made a decision on something, it generally isn't in an outsider's purview to make that decision for them.
 
 ---
 
