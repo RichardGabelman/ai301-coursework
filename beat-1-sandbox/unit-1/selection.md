@@ -15,13 +15,11 @@ wrong label is not graded.
 
 **Issue link**
 
-[The individual Path Review issue page. A link to the repository or the issue list
-does not satisfy this field.]
+https://github.com/codepath/pathreview-ai301-fa26-s3/issues/58
 
 **Verdict output**
 
-[Your skill's live-mode output for this issue, pasted verbatim and ending with the
-fenced JSON verdict block. A summary does not satisfy this field.]
+"1. #58 — Bias detector patterns too narrow (bug, safety, tier-1). Best fit: Python regex work in one file (safety/bias_detector.py), and 9 existing failing tests in tests/unit/test_bias_detector.py pin the expected behavior exactly, so there's nothing to design. It's also the only tier-1 of the four, and the fairness/bias subject matter lines up with your civic-tech and public-policy interest."
 
 **The verdict must record `accept` for this issue.** Choose an issue your own skill
 accepts. If your skill rejects every candidate you try, that is a signal about your
@@ -30,7 +28,21 @@ partial re-run costs about $0.20 — or run the skill on different candidates. O
 recording `reject` for the issue you chose earns no credit for this field.
 
 ```
-paste the output here, including the closing JSON block
+{
+    "item": "https://github.com/codepath/pathreview-ai301-fa26-s3/issues/58",
+    "checks": [
+      {"name": "Recent default-branch commits", "grade": "pass", "evidence": "Last 5 commits: 2026-09-16 (x3), 2026-08-24 (x2) — all within 30 days of 2026-09-20."},
+      {"name": "Recent human-contributions", "grade": "pass", "evidence": "Repo has 0 PRs ever; all 5 default-branch commits are authored by Aburke225 (Andrew Burke), not a [bot]."},
+      {"name": "Repo isn't archived", "grade": "pass", "evidence": "GitHub API repo object: \"archived\": false."},
+      {"name": "Not an epic issue", "grade": "pass", "evidence": "Labels are [bug, safety, tier-1]; body describes one regex-coverage defect, no sub-item list."},
+      {"name": "Issue is unclaimed", "grade": "pass", "evidence": "\"assignees\": [] and 0 comments on the issue."},
+      {"name": "Issue has no outstanding PRs", "grade": "pass", "evidence": "Repository-wide PR list (state=all) returns 0 PRs; issue timeline shows only 3 'labeled' events, no cross-references."},
+      {"name": "No product decisions", "grade": "pass", "evidence": "\"Nine unit tests specifying the intended coverage fail\" in tests/unit/test_bias_detector.py — expected behavior is pinned by tests."},
+      {"name": "Repo allows AI contributions", "grade": "pass", "evidence": "docs/CONTRIBUTING.md states workflow conditions only; no AI ban, and no AI_POLICY.md/AGENTS.md in the repo."},
+      {"name": "Comments don't include unresolved debate", "grade": "pass", "evidence": "Issue comment count is 0."}
+    ],
+    "verdict": "accept"
+  }
 ```
 
 ---
