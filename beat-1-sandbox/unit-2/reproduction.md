@@ -13,10 +13,7 @@ label is not graded.
 
 ## Your identity upstream
 
-**GitHub username**
-
-[Your GitHub username, exactly as it appears on your profile — no `@`, no profile URL. Your
-comments upstream are identified by this name.]
+**RichardGabelman**
 
 ---
 
@@ -37,26 +34,21 @@ field is graded on, so copy across what you actually posted.]
 
 ## Eval iterations
 
-Answer all four sections. Quote source text directly; paraphrase does not satisfy these
-fields.
-
 **Run history**
 
-[The agreement score of each run you did, in order. A single run is a complete answer if
-only one run occurred. **The last score in your list must match the agreement line in the
-`eval-run.txt` you committed** — that file is the record of your final run.]
+17/20
+19/20
 
 **Package analysis**
 
-[Pick one scored package (`pkg-01` through `pkg-20` — the four `calib-` packages are never
-scored). Name it by id, say what your rubric decided and what the gold label said, and
-explain why your rubric read it that way.]
+`pkg-20`
+My rubric (after adding new rules) believes it to be a reject, in agreement with the gold label. The repository has AI-disclosure requirements in it's contributing/AI-policy files. I specifically communicated in my skill documents that all claim comments + repro reports it will look at will have made use of AI in some way, and thus, all claim comments/repro reports need to disclose AI usage if required by the repository rules. The claim comment and repro report in question did not.
 
 **Check rationale**
 
-[Quote one check from the `rubric.md` you uploaded to `tools/repro-check/`, exactly as it reads now.
-Then say why it reads that way — what you revised to get there, or what you rejected in
-favour of it.]
+| No hard timelines | claim comment body, repro report body | Pass if the comment and/or repro report don't contain hard (specific) timelines | Required |
+
+I originally had this stipulation in my voice guide document as a preference moreso than a rejectable offense. Running my first eval_run surfaced a discrepancy, `pkg-19`, which should've been a reject according to the gold label which my original rubric deemed acceptable. Providing a hard timeline like this is too specific and potentially dishonest. We can't gurantee how long a fix will take, and frankly we might not even have the skillset to provide a reasonable estimate, either. Our claim comments shouldn't make promises we can't keep.
 
 **Trade-offs**
 
@@ -64,6 +56,9 @@ favour of it.]
 result it changes, a canary you re-ran with `--only`, a case you accept it will miss, or a
 stated reason nothing changed elsewhere. "Nothing changed, and here is how I know" earns
 the point in full when the reason follows.]
+
+`pkg-19` was one of the packages I had an initial discrepancy with. It is the sole reason for the check mentioned directly above "No hard timelines" existing.
+In a similar vein, `pkg-20` was the only issue requiring a checking of the repo's disclosure requirements. We need at least one passing in each category and it is the only one in it's category and thus we must pass it. It is the sole issue for which another one of my checks "Disclosure adherence" exists.
 
 ---
 
