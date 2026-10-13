@@ -13,22 +13,13 @@ label is not graded.
 
 ## Your pull request
 
-**Pull request**
-
-[Link to the pull request you opened. It must be the pull request's own page on the Path
-Review repo, not your fork's branch page.]
+**[Pull request](https://github.com/codepath/pathreview-ai301-fa26-s3/pull/188#issue-5829407658)**
 
 **Branch**
 
-[The name of the branch the pull request comes from, exactly as it appears in your fork.
-The naming shape is a type prefix, then the issue number, then a short description. **The
-issue number in the branch name must be the number of the issue the pull request fixes** —
-a name carrying any other number does not satisfy this field.]
+fix/58-expand-bias-detection
 
 ## Eval iterations
-
-Answer all four sections. Quote source text directly; paraphrase does not satisfy these
-fields.
 
 **Run history**
 
