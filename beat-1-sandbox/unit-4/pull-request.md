@@ -32,28 +32,21 @@ fields.
 
 **Run history**
 
-[The agreement score of each run you did, in order. A single run is a complete answer if
-only one run occurred. **The last score in your list must match the agreement line in the
-`eval-run.txt` you committed** — that file is the record of your final run.]
+20/20
 
 **Package analysis**
 
-[Pick one scored package (`pkg-01` through `pkg-20` — the four `calib-` packages are never
-scored). Name it by id, say what your rubric decided and what the gold label said, and
-explain why your rubric read it that way.]
+`pkg-01`: My rubric decided it should be rejected, in alignment with the gold label. The PR does not comply with the repository's PR template/checklist which means it was not in compliance per the `standards-wall` category.
 
 **Check rationale**
 
-[Quote one check from the `rubric.md` you uploaded to `tools/pr-precheck/`, exactly as it reads now.
-Then say why it reads that way — what you revised to get there, or what you rejected in
-favour of it.]
+| PR follows existing template | repo's PR templates, PR description | Reject if the PR doesn't follow a provided PR template, if one such exists. Following meaning to fill out all required sections, properly, unless good reason is given. | required |
+
+The PRs need to follow existing PR standards (PR templates + AI policy). This check rejects the PR if it doesn't comply with the repo's PR template specifically. This check is the same as when I first wrote it, no revisions, and no real debate on its inclusion.
 
 **Trade-offs**
 
-[Every check gives something up. Any one of these is a complete answer: a package whose
-result it changes, a canary you re-ran with `--only`, a case you accept it will miss, or a
-stated reason nothing changed elsewhere. "Nothing changed, and here is how I know" earns
-the point in full when the reason follows.]
+The check above is responsible for the rejections of `pkg-01` (only). Without that check, the PR is otherwise solid and thus would've passed the rubric. This check is necessary to enforce compliance with repo PR standards.
 
 ---
 
