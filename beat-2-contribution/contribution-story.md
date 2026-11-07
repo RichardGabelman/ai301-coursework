@@ -8,9 +8,8 @@ format criteria grade exactly that. Your course repo link is the whole submissio
 files and no evidence uploads are part of Assignment 5.
 
 **Contribution Number:** [1]
-**Student:** [Student name]
-**GitHub Username:** [your GitHub username, exactly as it appears on your profile - no @, no
-profile URL. Your comments upstream are identified by this name.]
+**Student:** Richard Gabelman
+**GitHub Username:** RichardGabelman
 **Issue:** [GitHub issue link]
 **Pull Request:** [GitHub PR link, once opened]
 
@@ -55,10 +54,10 @@ happened; these entries are the toolkit's own timeline.
 All four entries are graded. Keep every heading below, and fill each
 one in the week it belongs to.
 
-**Unit 5: [one line on the tool work]**
+**Unit 5: Write search strategy, iterate on issue-scout rubric**
 
-[2-4 sentences: what you built (the scout, your strategy), what broke
-or fell short, what changed because of it.]
+Built a search-strategy which is composed of various GitHub issue queries, ranking filters, and grading quantity parameters. Most iterations on this were with regard to the GitHub issue queries as the terms I was looking for weren't necessarily constrained to my field of interest. Running the scan surfaced a few issues with my original rubric which needed fixing, especially with regard to label-only checks vs. hollistic checks, assignees vs. claimees, and feasability.
+
 
 **Unit 6: [one line on the tool work]**
 
