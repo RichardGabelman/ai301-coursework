@@ -1,4 +1,4 @@
-# Contribution: [Issue Title]
+# Contribution: [Privacy/site map: add robots.txt (disallow) + noindex on authenticated app pages #276]
 
 Path: `beat-2-contribution/contribution-story.md`
 
