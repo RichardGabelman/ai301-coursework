@@ -89,11 +89,10 @@ I graded this issue and it approved it. The repo allows external contributions, 
 
 **Toolkit**
 
-- Tool: issue-scout (your scout: your search strategy, your rubric),
-  and how you used it
-- What it produced: [the scan and its verdict on this issue, described]
-- Difficulties: [where it fell short, or "none met" if none did]
-- What changed: [what you patched or would update, or "nothing"]
+- Tool: issue-scout. Issue scout was initially used to look for issues meeting the conditions in my search strategy. My search strategy was essentially a list of tiered GitHub queries that utilized key words I felt would indicate alignment with an area of interest + some ranking filters to order within a tier (essentially various indicators of issue + repo quality). The initial run of this functionality surfaced some issues with my search strategy and my rubric which were subsequently patched. Two additional runs of this functionality + iteration went better but did not surface any issue worth approaching. The other functionality was grading specific issues. After manually finding what I thought was a good fit, I ran this functionality on the issue and it passed.
+- What it produced: The broader scan functionality surfaces a list of 5 issues ranked by best fit. A further json list of the issues goes further into detail on the specific checks and how each issue passed the checks. It also provided a few areas where it believed the search strategy and/or the rubric was faulty, with some recommendations on how to improve it. The specific issue scan just produces a singular json block with the info about how that specific block meets the checks of the rubric, with an overall grade of accept/reject (the one I chose passed). The final change to the rubric per the assignment added a further assessment of issue feasibility (which my chosen issue was determined to be straightforward).
+- Difficulties: The full GitHub search strategy struggled as the keywords I chose happened to exist in domains completely unrelated to my expectations. My search strategy (and my rubric) also fell short in rejecting various low quality issues which required some further tuning of my rubric. Finally, the issue website seemed to contain a lot of poor quality issues as well (perhaps because I was late to it), with a bunch of issues being many years old. Finding this repository was actually rather difficult.
+- What changed: I think the search strategy could perhaps be a bit more hollistic or perhaps there should be a further breakdown of searching for issues by good technical fit vs. interest fit. Trying to do both in one fell swoop seems difficult, especially with only keyword queries like I tried to employ.
 
 ---
 
