@@ -10,7 +10,7 @@ files and no evidence uploads are part of Assignment 5.
 **Contribution Number:** [1]
 **Student:** Richard Gabelman
 **GitHub Username:** RichardGabelman
-**Issue:** [GitHub issue link]
+**Issue:** [\[GitHub issue link\]](https://github.com/lolimmlost/aidj/issues/276)
 **Pull Request:** [GitHub PR link, once opened]
 
 One repository, built across units 5 to 8, telling the whole story of your real
@@ -79,16 +79,13 @@ drafted, what you did with the draft.]
 
 ## Why I Chose This Issue
 
-[1-2 paragraphs in your own words: how you searched, what your scan
-surfaced, what your scout's verdict said, why this issue fits your
-profile, and what you hope to learn. If your scout's verdict on it
-was reject and you chose it anyway, say so here and say why; choosing
-against your own tool silently is what loses points. Close with an
-honest read of the tool itself: where the scout fell short on a real
-wild search and what you changed or would change, or what convinced
-you it held up. **Record the link to your claim comment in this section too.**
-Not claimed yet? Write `claim pending` and today's date where the link goes,
-and add the link the moment your claim lands.]
+**[Claim comment](https://github.com/lolimmlost/aidj/issues/276#issuecomment-6790098113)**
+
+The search tool itself consistently seemed to find unrelated issues or otherwise poor issues, probably due to slight inaccuracies in various rubrics and instructions. I was hoping to prioritize an issue to work on based on the sector of tech the project was in. I wanted something to do with civictech or government tech, generally. I have had success in previous AI 301 iterations contributing to open-source government sites but it appears my tool did not discover any (or at least preferred others). 
+
+I then moved to looking through the list of issues provided on the website. Here I instead prioritized languages and technologies I knew. I did a few initial passes looking for, again, repositories I thought would be in my area of interest. I found a few issues aligned with that (and even graded a few) before discovering that they required a bit of an extensive process to become a contributor (which I will gladly participate in but wouldn't be doable in the time-alotted). Finally, I did a few more passes, this time just looking for doable issues. I ran into a lot of really old issues and issues with unclear tasks, etc.... Finally, I found an issue from this repository. I was a bit skeptical given the repo appeared to be a one-man (+ Claude) operation but it seems really well organized.
+
+I graded this issue and it approved it. The repo allows external contributions, it's a good first issue, the scope is managable, nobody else has claimed it, the repo is in use, etc....
 
 **Toolkit**
 
