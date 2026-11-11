@@ -87,7 +87,7 @@ I graded this issue and it approved it. The repo allows external contributions, 
 
 **Toolkit**
 
-- Tool: issue-scout. Issue scout was initially used to look for issues meeting the conditions in my search strategy. My search strategy was essentially a list of tiered GitHub queries that utilized key words I felt would indicate alignment with an area of interest + some ranking filters to order within a tier (essentially various indicators of issue + repo quality). The initial run of this functionality surfaced some issues with my search strategy and my rubric which were subsequently patched. Two additional runs of this functionality + iteration went better but did not surface any issue worth approaching. The other functionality was grading specific issues. After manually finding what I thought was a good fit, I ran this functionality on the issue and it passed.
+- Tool: Issue scout was initially used to look for issues meeting the conditions in my search strategy. My search strategy was essentially a list of tiered GitHub queries that utilized key words I felt would indicate alignment with an area of interest + some ranking filters to order within a tier (essentially various indicators of issue + repo quality). The initial run of this functionality surfaced some issues with my search strategy and my rubric which were subsequently patched. Two additional runs of this functionality + iteration went better but did not surface any issue worth approaching. The other functionality was grading specific issues. After manually finding what I thought was a good fit, I ran this functionality on the issue and it passed.
 - What it produced: The broader scan functionality surfaces a list of 5 issues ranked by best fit. A further json list of the issues goes further into detail on the specific checks and how each issue passed the checks. It also provided a few areas where it believed the search strategy and/or the rubric was faulty, with some recommendations on how to improve it. The specific issue scan just produces a singular json block with the info about how that specific block meets the checks of the rubric, with an overall grade of accept/reject (the one I chose passed). The final change to the rubric per the assignment added a further assessment of issue feasibility (which my chosen issue was determined to be straightforward).
 - Difficulties: The full GitHub search strategy struggled as the keywords I chose happened to exist in domains completely unrelated to my expectations. My search strategy (and my rubric) also fell short in rejecting various low quality issues which required some further tuning of my rubric. Finally, the issue website seemed to contain a lot of poor quality issues as well (perhaps because I was late to it), with a bunch of issues being many years old. Finding this repository was actually rather difficult.
 - What changed: I think the search strategy could perhaps be a bit more hollistic or perhaps there should be a further breakdown of searching for issues by good technical fit vs. interest fit. Trying to do both in one fell swoop seems difficult, especially with only keyword queries like I tried to employ.
@@ -125,31 +125,25 @@ I graded this issue and it approved it. The repo allows external contributions, 
 
 **Environment Setup**
 
-[What a stranger would need to stand this up: your operating system,
-the relevant versions (language, runtime, package manager, the project
-itself), and how you set the project up. Then the challenges you faced
-and how you solved them, or that none came up.]
+The problem is more of an external problem requiring new files and additional changes to existing files. I can't really reproduce the problem of web crawlers going on pages we don't want them to without... making my own web crawler, I guess. I simply visually inspected for the possible existence of the files/changes called for to be added by the issue and confirmed they don't exist yet. No problems came up in my visual inspection.
 
 **Steps to Reproduce**
 
-1. [Step 1]
-2. [Step 2]
-3. [Observed result]
+1. Visually observe the lack of a robots.txt file in `public/`.
+2. Visually observe the lack of a meta robots tag with noIndex set in `src/routes/__root.tsx` and in `src/routes/music-identity/share.$token.tsx`.
 
 **Reproduction Evidence**
 
-- **Commit showing reproduction:** [link to commit in your fork]
-- **Screenshots/logs:** [if applicable]
-- **My findings:** [what you discovered during reproduction; an
-  honest, evidenced cannot-reproduce that led you to re-pick or ask
-  the maintainer belongs here and costs you nothing]
+- **Commit showing reproduction:** None
+- **Screenshots/logs:** N/A
+- **My findings:** No robots.txt exists. No noIndex tags exist on the specified routes.
 
 **Toolkit**
 
-- Tool:
-- What it produced:
-- Difficulties:
-- What changed:
+- Tool: repro-check confirmed my existing claim comment passed and reviewd my draft repro-evidence against my voice guard and my repro-evidence rubric.
+- What it produced: It produces a json block of the various repro-evidence rubric checks and how my draft repro comment fared against them. It provided tips on how to adjust the comment to match the repro rubric checks.
+- Difficulties: No difficulties in utilizing it, it did surface some issues that were summarily addressed. I'd say not all issues need indepth reproduction, some, like this one, are simply obvious.
+- What changed: Nothing.
 
 ---
 
