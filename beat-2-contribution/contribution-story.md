@@ -59,11 +59,9 @@ one in the week it belongs to.
 Built a search-strategy which is composed of various GitHub issue queries, ranking filters, and grading quantity parameters. Most iterations on this were with regard to the GitHub issue queries as the terms I was looking for weren't necessarily constrained to my field of interest. Running the scan surfaced a few issues with my original rubric which needed fixing, especially with regard to label-only checks vs. hollistic checks, assignees vs. claimees, and feasability.
 
 
-**Unit 6: [one line on the tool work]**
+**Unit 6: Install voice guard and patch rubric**
 
-[2-4 sentences: the voice-guard, the repo-memory file. What broke or
-fell short, and what changed because of it. "Nothing broke" counts when
-it is true - say how you know.]
+Followed the voice guard install instructions. Added a few claim-specific voice rules. Added a local repo-memory file but didn't have to add much due to a well-formed existed CLAUDE.md file. Nothing broke or fell short, the voice guard worked when posting the draft comment and the new rubric changes executed as expected.
 
 **Unit 7: [one line on the tool work]**
 
