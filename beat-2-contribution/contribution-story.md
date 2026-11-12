@@ -98,19 +98,19 @@ I graded this issue and it approved it. The repo allows external contributions, 
 
 **Problem Description**
 
-[In your own words, what is broken or missing?]
+The current website configuration allows web crawlers to visit and index every page, which doesn't make sense in an auth-gated application. Only non-auth gated pages (i.e. the landing page) should be indexed and thus reachable via a search engine. The proper way to communicate this to the search engines is with a robots.txt file and a meta noindex tag on authenticated routes. Care must be taken to preserve the existing "unfurl" behavior on share pages.
 
 **Expected Behavior**
 
-[What should happen?]
+Web crawlers should not be attempting to index auth-gated pages.
 
 **Current Behavior**
 
-[What actually happens?]
+Web crawlers are attempting to index auth-gated pages. Once shareable links exist, an unguarded tokenized URL can end up indexed.
 
 **Affected Components**
 
-[Which parts of the codebase are involved?]
+robots.txt typically lives in the root level public/ folder. The meta tag should be placed on the route heads in src/routes/__root.tsx.
 
 **Toolkit**
 
@@ -126,6 +126,17 @@ I graded this issue and it approved it. The repo allows external contributions, 
 **Environment Setup**
 
 The problem is more of an external problem requiring new files and additional changes to existing files. I can't really reproduce the problem of web crawlers going on pages we don't want them to without... making my own web crawler, I guess. I simply visually inspected for the possible existence of the files/changes called for to be added by the issue and confirmed they don't exist yet. No problems came up in my visual inspection.
+
+Setting up the application is simple:
+Prerequisites: Node.js 20+, PostgreSQL, and a Navidrome instance.
+```bash
+git clone https://github.com/lolimmlost/aidj.git
+cd aidj
+npm install
+cp .env.example .env   # fill in DATABASE_URL, BETTER_AUTH_SECRET, Navidrome URL/credentials, …
+npm run db             # generate + apply migrations
+npm run dev            # http://localhost:3003
+```
 
 **Steps to Reproduce**
 
