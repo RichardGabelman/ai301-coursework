@@ -162,45 +162,47 @@ npm run dev            # http://localhost:3003
 
 **Analysis**
 
-[Your analysis of the root cause: what is causing the issue, traced
-to the files and functions involved.]
+There is no robots.txt file in public/ which means web crawlers visiting the site have no guidance on what pages to visit and which to avoid.
+There is no meta noIndex tag on all routes with overrides for specific pages that are ok to be indexed (or vice versa).
 
 **Proposed Solution**
 
-[High-level description of your fix approach, and what you are
-deliberately NOT changing.]
+Adding robots.txt to public/ that disallows everything except the landing page.
+<meta name="robots" content="noindex"> on authenticated routes (root head() in src/routes/__root.tsx, overridable per route).
+Share pages: noindex by default, but keep OG/Twitter tags so link previews still unfurl.
 
 **Implementation Plan**
 
-1. [Modify file X to do Y]
-2. [Add or change Z]
-3. [Update tests]
+1. Add robots.txt to public/ with a disallow on everything and an allow on the landing page.
+2. Add <meta name="robots" content="noindex"> on the root head() in routes.
+3. Keep OG/Twitter tags on share pages (music-identity/share.$token) with some sort of override.
 
 [Record deviations here as they happen: what changed mid-build and
 why. A recorded deviation is honest work; silent drift is not.]
 
 **Toolkit**
 
-- Tool:
-- What it produced:
-- Difficulties:
-- What changed:
+- Tool: plan-check confirmed that my plan comment met repository conventions, contained the correct diagnosis of the issue, established an explicit scope of which files it would change (and how), and that I had a testing strategy to ensure the validity and completeness of my solution. 
+- What it produced: When ran on a plan + plan comment, plan-check returns an overall verdict (accept/reject) based on the passing of various checks in its rubric. The specific checks are shown and how the comment addresses them, in both normal text form and in json form. It also includes some helpful tips on things to change/update, especially to get it passing if it was rejected.
+- Difficulties: No difficulties with the tool, although it did identify a weakness in my existing plan and offered information on how to fix it.
+- What changed: Nothing changed with the tool, but it did recommend the proper testing strategy for the changes outlined in my plan.
 
 ---
 
 ## Testing Strategy
 
-[What observable checks prove the fix: your reproduction steps re-run
-against the built change (before and after), and the repo's own test
-suite or checks with the outcome shown. "Tests pass" with nothing
-observable named is not a strategy.]
+
+I will run `curl localhost:3003/robots.txt` and ensure that the text received includes a disallow-all with an allow for / only.
+I will ensure that the page source of an authenticated page such as /dashboard contains <meta name="robots" content="noindex">.
+I will ensure that a share page has both noindex and the og:/twitter tags.
+I will ensure existing tests continue to pass (npx vitest run, npm run lint, and npm run build).
 
 **Toolkit**
 
-- Tool:
-- What it produced:
-- Difficulties:
-- What changed:
+- Tool: plan-check judged my existing testing strategy against my plan (and the issue). It first identified a lack of tests and provided ways to test this style of change. I incorporated those changes into my plan and will utilize the testing strategy provided to ensure the validity of my change.
+- What it produced: With respect to testing, in its evaluation of my plan comment, one of the checks within my rubric dealt with the existence of a valid testing strategy. It was in this capacity that it first identified the problem with my testing strategy, by having the plan comment fail on that specific check (identified in both normal text and json form). It provided a few lines in normal text on what to do to get the testing strategy to meet the bar of the check.
+- Difficulties: No difficulties with the tool. It identified an inadequacy and told me how to fix it.
+- What changed: No changes to the tool. It provided guidance on what was wrong with my existing testing strategy and how to fix it which I incorporated into my plan.
 
 ---
 
