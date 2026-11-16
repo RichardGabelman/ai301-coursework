@@ -229,10 +229,89 @@ Finally, I added the index, follow override to the landing page to allow it to b
 
 ## Pull Request
 
-**PR Link:** [GitHub PR URL when opened]
+**PR Link:** https://github.com/lolimmlost/aidj/pull/418
 
-**PR Description:** [what the PR says; much of the content above
-adapts into it]
+**PR Description:**
+
+## What & why
+
+Fixes #276
+
+Adds `public/robots.txt` with rules disallowing everything but:
+- the landing page (`/$`)
+- `/assets/` (Google renders pages, and if it can't load these the landing page looks empty or broken to it)
+- `/og-image.png` (for social previews)
+- `/favicon.ico`, `/icons/`, `/manifest.json` (Favicon and PWA metadata that search results and browsers show next to the site)
+- `/music-identity/share/` (public share links which need to be fetchable for link previews)
+- `/playlists/join/` (same reasoning)
+- `/invite` (same reasoning)
+
+The exceptions were surfaced by AI. Looking into them, it seems to make sense to allow them given the expressed intent to have share links, etc.
+
+Adds `noindex` to the root head.
+
+Adds `index, follow` override to the landing page.
+
+## How it was tested
+
+I had AI devise suitable tests for a change like this and had it run it, producing this output:
+
+### 1. `public/robots.txt` is served
+
+`curl -si localhost:3004/robots.txt` → `HTTP/1.1 200 OK`, `Content-Type: text/plain`
+
+```
+User-agent: *
+Allow: /$
+Allow: /assets/
+Allow: /og-image.png
+Allow: /favicon.ico
+Allow: /manifest.json
+Allow: /icons/
+Allow: /music-identity/share/
+Allow: /playlists/join/
+Allow: /invite
+Disallow: /
+```
+
+### 2. Robots meta tags in SSR output
+
+Command: `curl -s localhost:3005<path> | grep -oE '<meta [^>]*>' | grep -E 'robots|og:|twitter:'`
+
+| Path | Status | robots meta | og:/twitter: tags |
+|------|--------|-------------|-------------------|
+| `/` | 200 | `index, follow` (only one robots tag — the route override replaces the root `noindex`) | present |
+| `/login` | 200 | `noindex` | present |
+| `/music-identity/share/abc123` | 200 | `noindex` | present (og:title, og:description, og:image, twitter:card, twitter:image, …) |
+| `/invite` | 200 | `noindex` | present |
+| `/dashboard` | 307 → `/login?redirect=%2Fdashboard` | n/a (unauthenticated) | n/a |
+| `/playlists/join/abc123` | 307 → `/login?redirect=…` | n/a (unauthenticated) | n/a |
+
+Example (`/music-identity/share/abc123`):
+
+```html
+<meta name="robots" content="noindex"/>
+<meta property="og:title" content="AIDJ"/>
+<meta property="og:description" content="AI-powered music discovery and smart playlists"/>
+<meta property="og:image" content="http://localhost:3000/og-image.png"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="http://localhost:3000/og-image.png"/>
+```
+
+The share route defines no `head()` of its own, so its tags come from the root route. A real share token would render the same `<head>` as the dummy token used here.
+
+### 3. Existing checks
+
+- `npx vitest run` → `Test Files 85 passed | 3 skipped (88)`, `Tests 1041 passed | 26 todo (1067)`
+- `npm run lint` → `0 errors, 392 warnings`. The only warning in a changed file (`src/routes/__root.tsx:35`, `ensureQueryData` deprecated) is on a line this PR did not touch.
+- `npm run build` → exit 0, `✓ built`
+
+## Checklist
+- [x] `npx vitest run` passes
+- [x] `npm run lint` passes on touched files
+- [x] `npm run build` succeeds (commit `src/routeTree.gen.ts` if routes changed)
+- [x] Migrations included for schema changes
+- [x] No unrelated dependency bumps (especially `better-auth`)
 
 **Maintainer Feedback:**
 
@@ -240,16 +319,14 @@ adapts into it]
   state and costs you nothing]
 - [Date]: [how you addressed it]
 
-**Status:** [Awaiting review / Iterating / Merged / Closed. The
-status is a fact you record, never a grade: the PR is graded as
-opened.]
+**Status:** Awaiting Review
 
 **Toolkit**
 
-- Tool:
-- What it produced:
-- Difficulties:
-- What changed:
+- Tool: ship-gate was used to judge a pr as worthy before actually creating it. It runs tests, applies various PR rubrics to the pr draft, checks the writing against a voice guard, and even judges the solution against the issue.
+- What it produced: It produces an accept/reject verdict for the PR. It provides various tips and recommendations for changes.
+- Difficulties: No difficulties using the tool.
+- What changed: It changed a few formatting things to align my pr description with one of my voice guard rules. Nothing changed regarding the tool itself.
 
 ---
 
