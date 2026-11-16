@@ -208,23 +208,22 @@ I will ensure existing tests continue to pass (npx vitest run, npm run lint, and
 
 ## Implementation Notes
 
-[A running log, added to as you work. Date each entry. What you
-built, decisions you made when you made them, wrong turns included.]
 
-**[Date]**
+**[11-14-2026]**
 
-[Entry]
+I implemented the updated robots.txt per guidance from Claude. It recognized that my naive implementation of the file (based off of the issue guidance from the maintainer), would disrupt intended functionality (derived from some of the other objectives in the issue).
 
-**[Date]**
+I added noindex to the root head of the routes, making all pages noindex by default. This slightly deviated from my understanding of the solution as I thought I'd be applying noindex to specific authenticated routes as an override but instead noindex is the default and we are overriding it on the landing page to allow indexing.
 
-[Entry]
+Finally, I added the index, follow override to the landing page to allow it to be indexed.
+
 
 **Toolkit**
 
-- Tool:
-- What it produced:
-- Difficulties:
-- What changed:
+- Tool: Claude CLI identified some problems in the original plan which contributed to my better understanding, and thus, better implementation of the solution. I specifically asked it to verify my work against the plan (and against reasonable expectations) which highlighted the issues and their solutions.
+- What it produced: Textual guidance.
+- Difficulties: No difficulties with the tool.
+- What changed: My plan changed from my original naive solution when given guidance from Claude. Nothing changed, tool-wise.
 
 ---
 
