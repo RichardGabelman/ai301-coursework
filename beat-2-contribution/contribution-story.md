@@ -56,10 +56,9 @@ Followed the voice guard install instructions. Added a few claim-specific voice 
 
 Installed the ship-gate hook which runs a series of checks prior to Claude Code opening a pull request. I wrote the ship-manifest which outlines some of the checks the project itself says to run prior to opening a PR. The ship-gate raised some voice-guard problems related to formatting, which Claude automatically fixed when opening the PR.
 
-**Unit 8: [one line on the tool work]**
+**Unit 8: Install pr-monitor and write guidelines for maintainer responses**
 
-[2-4 sentences: the PR-monitor and your playbook. What it read, what it
-drafted, what you did with the draft.]
+Installed the pr-monitor code which analyzes the state of the pull request and determines what to do. It uses a playbook which I wrote up to establish guidelines for responses, what constitutes a good time to nudge the maintainer, and when to walk away from the PR. I ran it just a day after submitting it (after already seeing a bit of activity) and thus was simply told to wait (which I am abiding).
 
 ---
 
