@@ -1,24 +1,13 @@
-# Contribution: [Privacy/site map: add robots.txt (disallow) + noindex on authenticated app pages #276]
+# Contribution: Privacy/site map: add robots.txt (disallow) + noindex on authenticated app pages #276
 
 Path: `beat-2-contribution/contribution-story.md`
 
-This file is Assignment 5, and it is graded at the path above; a copy kept anywhere else in
-the repository is not read. **Keep every section header below under its exact name** — the
-format criteria grade exactly that. Your course repo link is the whole submission: no tool
-files and no evidence uploads are part of Assignment 5.
 
 **Contribution Number:** [1]
 **Student:** Richard Gabelman
 **GitHub Username:** RichardGabelman
 **Issue:** [\[GitHub issue link\]](https://github.com/lolimmlost/aidj/issues/276)
-**Pull Request:** [GitHub PR link, once opened]
-
-One repository, built across units 5 to 8, telling the whole story of your real
-contribution. Fill it as you work, not at the end — the sections below ask for evidence that
-is far easier to write down as it happens than to reconstruct in the last weekend.
-
-Contribution Number stays `[1]` unless you make more than one contribution this term; it
-just numbers them.
+**Pull Request:** [\[GitHub PR link\]](https://github.com/lolimmlost/aidj/pull/418)
 
 ---
 
@@ -63,10 +52,9 @@ Built a search-strategy which is composed of various GitHub issue queries, ranki
 
 Followed the voice guard install instructions. Added a few claim-specific voice rules. Added a local repo-memory file but didn't have to add much due to a well-formed existed CLAUDE.md file. Nothing broke or fell short, the voice guard worked when posting the draft comment and the new rubric changes executed as expected.
 
-**Unit 7: [one line on the tool work]**
+**Unit 7: Install ship-gate to prevent poor PR submission**
 
-[2-4 sentences: the ship-gate and your gate manifest. What it produced
-on your real branch, what fought you, what changed because of it.]
+Installed the ship-gate hook which runs a series of checks prior to Claude Code opening a pull request. I wrote the ship-manifest which outlines some of the checks the project itself says to run prior to opening a PR. The ship-gate raised some voice-guard problems related to formatting, which Claude automatically fixed when opening the PR.
 
 **Unit 8: [one line on the tool work]**
 
@@ -114,10 +102,10 @@ robots.txt typically lives in the root level public/ folder. The meta tag should
 
 **Toolkit**
 
-- Tool:
-- What it produced:
-- Difficulties:
-- What changed:
+- Tool: CLAUDE.local.md was a file we created to aid Claude in quickly understanding the repo instead of taking a bunch of time (and tokens!) relearning the repo each new session. 
+- What it produced: We produced a local file, specifically not tracked by git, existing only in our local copy of the repo. Contained within it are various important pieces of info regarding the repo and the mission, including the repo link, the issue link, commit/pr conventions, relevant file locations, build commands, and test commands.
+- Difficulties: No difficulties.
+- What changed: No changes.
 
 ---
 
@@ -140,14 +128,48 @@ npm run dev            # http://localhost:3003
 
 **Steps to Reproduce**
 
-1. Visually observe the lack of a robots.txt file in `public/`.
-2. Visually observe the lack of a meta robots tag with noIndex set in `src/routes/__root.tsx` and in `src/routes/music-identity/share.$token.tsx`.
+1. Run locally (follow build commands in contributing.md)
+2. Run curl on robots.txt, verifying it doesn't exist
+3. Run curl looking for meta tags in SSR output, verifying they don't exist
 
 **Reproduction Evidence**
 
 - **Commit showing reproduction:** None
-- **Screenshots/logs:** N/A
-- **My findings:** No robots.txt exists. No noIndex tags exist on the specified routes.
+- **Screenshots/logs:** 
+
+1. robots.txt: not served
+
+curl -si localhost:3006/robots.txt → HTTP/1.1 404, content-type: text/html; charset=utf-8
+
+The request falls through to the app's HTML 404 page, so crawlers get no rules at all.
+
+2. Robots meta tags in SSR output
+
+┌──────────────────────────────┬──────────────────────────────────────────────────┬────────────┬──────────────────┐
+│             Path             │                      Status                      │  robots    │  og:/twitter:    │
+│                              │                                                  │    meta    │       tags       │
+├──────────────────────────────┼──────────────────────────────────────────────────┼────────────┼──────────────────┤
+│ /                            │ 200                                              │ none       │ present          │
+├──────────────────────────────┼──────────────────────────────────────────────────┼────────────┼──────────────────┤
+│ /login                       │ 200                                              │ none       │ present          │
+├──────────────────────────────┼──────────────────────────────────────────────────┼────────────┼──────────────────┤
+│ /music-identity/share/abc123 │ 200                                              │ none       │ present          │
+├──────────────────────────────┼──────────────────────────────────────────────────┼────────────┼──────────────────┤
+│ /invite                      │ 200                                              │ none       │ present          │
+├──────────────────────────────┼──────────────────────────────────────────────────┼────────────┼──────────────────┤
+│ /dashboard                   │ 307 → /login?redirect=%2Fdashboard               │ n/a        │ n/a              │
+├──────────────────────────────┼──────────────────────────────────────────────────┼────────────┼──────────────────┤
+│ /playlists/join/abc123       │ 307 →                                            │ n/a        │ n/a              │
+│                              │ /login?redirect=%2Fplaylists%2Fjoin%2Fabc123     │            │                  │
+└──────────────────────────────┴──────────────────────────────────────────────────┴────────────┴──────────────────┘
+
+3. Existing checks: same as your branch
+
+- npx vitest run → Test Files 85 passed | 3 skipped (88), Tests 1041 passed | 26 todo (1067)
+- npm run lint → 0 errors, 392 warnings
+- npm run build → exit 0, ✓ built
+
+- **My findings:** No robots.txt exists. No noindex tags exist on all routes (and there is no index, follow override on the landing page).
 
 **Toolkit**
 
@@ -177,8 +199,11 @@ Share pages: noindex by default, but keep OG/Twitter tags so link previews still
 2. Add <meta name="robots" content="noindex"> on the root head() in routes.
 3. Keep OG/Twitter tags on share pages (music-identity/share.$token) with some sort of override.
 
-[Record deviations here as they happen: what changed mid-build and
-why. A recorded deviation is honest work; silent drift is not.]
+**Deviations**
+
+1. robots.txt was altered to enable the crawling of specific assets to enable the functionality of link previews described in the issue.
+2. No override was necessary to maintain the OG/Twitter tags on share pages.
+3. An override was necessary to allow the indexing of the landing page.
 
 **Toolkit**
 
@@ -349,10 +374,6 @@ Toolkit blocks above are full of them.]
 
 ## Resources Used
 
-[What actually helped, not a reading list. List things this story
-already shows you using: the doc you followed to set the environment
-up, the thread that explained the bug, the person who answered you.
-One real entry beats ten plausible ones.]
 
-- [Link to documentation that helped]
-- [Discussion, issue, or post that helped]
+- https://github.com/lolimmlost/aidj/blob/main/CONTRIBUTING.md (dev setup + checks)
+- https://github.com/lolimmlost/aidj/issues/276 (the issue creator made the fix quite easy)
