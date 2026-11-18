@@ -1,5 +1,6 @@
-<!-- Open with two sentences that say what you did, because LinkedIn hides the rest behind "…more". Start from the two LinkedIn lines you wrote in lecture. -->
+I spent the Fall learning how to leverage Claude to make high quality contributions to open source projects. 
+My main contribution this term was the addition to a project of important website configuration that provides instruction to search engines regarding which pages should be findable via their a simple search.
 
-<!-- Say how it ended and why it matters: where the work stands today, and what it was good for or what it taught you about how you work. -->
+My PR is currently open and awaiting review. If the maintainer identifies any changes to be made, I will make them. I hope to have the PR merged soon.
 
-<!-- End with one link: your PR or issue comment if you wrote about a contribution. If you wrote only about a tool, link your write-up (push it, open the file on GitHub, and copy the address). Hashtags can go after the link. -->
+PR: https://github.com/lolimmlost/aidj/pull/418
